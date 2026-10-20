@@ -1,0 +1,12 @@
+# Never include local credentials or Git metadata in Docker images
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+
+# Development dependencies and generated assets
+frontend/node_modules
+frontend/dist
+**/node_modules
+*.log
