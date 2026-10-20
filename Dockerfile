@@ -17,6 +17,9 @@ RUN docker-php-ext-install pdo pdo_mysql \
 
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
+# Serve the React frontend before the PHP index
+RUN echo 'DirectoryIndex index.html index.php' >> /etc/apache2/apache2.conf
+
 COPY . /var/www/html/
 
 COPY --from=frontend-build /frontend/dist/ /var/www/html/public/
